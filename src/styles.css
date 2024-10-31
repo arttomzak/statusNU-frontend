@@ -1,0 +1,54 @@
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 25px;
+    display: block;
+    text-align: center
+}
+
+.navbar li{
+    float: right;
+} 
+
+.navbar a:hover{
+    background-color: #482574;
+} 
+
+.navbar ul{
+    list-style-type: none;
+    background-color: #6635A3;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.navbar input[type=text] {
+    float: left;
+    padding: 15px;
+    padding-right: 33.3%;
+    margin: 10px
+}
+
+.friendstop ul{
+    display: flex;
+    align-items: flex-end;
+}
+
+.friendstop input[type=text] {
+    margin-left: 40px;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    width: 40%;
+    height: 50px;
+
+}
+
+.friendstop h1 {
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
+

@@ -14,13 +14,39 @@ function App() {
         <input type="text" placeholder="Search by username..."></input>
       </ul>
     </div>
-{/* literally why doesn't the below div show up in the style sheet?? */}
-    <div className="friendrequestcolumn">
-      <ul>
-       <FriendRequest name="Konrad Radecki" username="the1krad_"/> 
-       <FriendRequest name="Finn McMillan" username="finnmcm_"/> 
-      </ul>
-    </div>
+      <div className="friendrequestoutercontainer">
+        <div className="friendrequestinnercontainer">
+        <h1>Friend Requests</h1>
+          <ul>
+            <FriendRequest name="Konrad Radecki" username="the1krad_" />
+            <FriendRequest name="Finn McMillan" username="finnmcm_" />
+          </ul>
+        </div>
+      </div>
+      
+      
+  <div className = "friendcardcontainer">
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+    <FriendCard></FriendCard>
+  </div>
     </>
   );
 }
@@ -41,6 +67,20 @@ function NavBar() {
   );
 }
 
+
+function FriendCard() {
+  return (
+    <>
+
+      <div className='friendcard'>
+        <ul>
+          <h2>Konrad</h2>
+          <h4>MATH 228-2 in 15m</h4>
+        </ul>
+    </div>
+    </>
+  );
+}
 
 
 function FriendRequest (props) {
@@ -70,12 +110,11 @@ function FriendRequest (props) {
 
   return (
     <>
-      {/* this too why isn't it popping up in style sheet */}
-      <div className='friendrequestbox'>
+      <div className="friendrequestbox">
       {showList && (
         <ul>
           <h2>{props.name}</h2>
-          <h3>{props.username}</h3>
+          <h3>@{props.username}</h3>
           <p>{ decisionmessage }</p>
           <button onClick={handleClickAccept}>Accept</button>
           <button onClick={handleClickDeny}>Deny</button>
@@ -87,8 +126,5 @@ function FriendRequest (props) {
     </>
   );
 }
-
-
-
 
 export default App;

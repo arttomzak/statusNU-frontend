@@ -88,26 +88,30 @@ function FriendRequest (props) {
   const [friendstatus, setFriendstatus] = useState ('pending')
   const [showList, setShowList] = useState (true);
 
-
-
-  const handleClickAccept = () => {
-    setDecisionmessage('Friend request accepted!');
-    setFriendstatus('accepted')
-    setShowList(false)
-    console.log(friendstatus)
-
+// combining the functions lowkey broke it, consider just keeping it as two seperate ones as in the prev commit 
+  const handleRequests = (friendstatus) => {
+    if (friendstatus === 'accepted') {
+      setDecisionmessage('Friend request accepted!');
+      setShowList(false)
+    } else if (friendstatus === 'denied'){
+      setDecisionmessage('Friend request denied!');
+      setShowList(false)
+    } else {
+      setDecisionmessage('Friend request is pending.');
     }
-  
-  const handleClickDeny = () => {
-    setDecisionmessage('Friend request denied!')
-    setFriendstatus('denied')
-    setShowList(false)
-    console.log(friendstatus)
 
+    setFriendstatus(friendstatus);
+    
+  };
 
-  }
+  useEffect(() => {
+    console.log ('The friend request is:', friendstatus); // the code that will run every time a change in the variable friendstatus is recognized
 
-  return (
+    // Here there is space for an optional return function that would run before destroying itself and rerunning the above code with the updated values
+
+  }, [friendstatus]); // dependency array (the variable the useEffect hooking is looking for a change in)
+
+  return ( // I do not know why this makes the friend request buttons disappear, for some reason the ShowList is perma set to false
     <>
       <div className="friendrequestbox">
       {showList && (
@@ -115,8 +119,8 @@ function FriendRequest (props) {
           <h2>{props.name}</h2>
           <h3>@{props.username}</h3>
           <p>{ decisionmessage }</p>
-          <button onClick={handleClickAccept}>Accept</button>
-          <button onClick={handleClickDeny}>Deny</button>
+          <button onClick={handleRequests('accepted')}>Accept</button>
+          <button onClick={handleRequests('denied')}>Deny</button>
         </ul>
         )}
       </div>

@@ -1,53 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 
-import App from './App';
+import Layout from "./pages/Layout";
 import Friends from "./pages/Friends";
 import Home from "./pages/Home";
+import NoPage from "./pages/NoPage";
+import Profile from "./pages/Profile";
 
 
-// export default function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Layout />}>
-//           <Route index element={<Home />} />
-//           <Route path="friends" element={<Friends />} />
-//         </Route>
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="Friends" element={<Friends />} />
+          <Route path="Profile" element={<Profile />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<App />);

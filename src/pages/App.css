@@ -10,6 +10,10 @@
     float: right;
 } 
 
+/* .navbar sitetitle{
+    float:left;
+} attempted way to make status.nu float to the left */
+
 .navbar a:hover{
     background-color: #482574;
 } 

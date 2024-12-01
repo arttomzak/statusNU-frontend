@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 function FriendRequest (props) {
 
@@ -62,6 +62,11 @@ function FriendRequest (props) {
 //   );
 // }
 
+const FriendCard = ({ children }) => {
+  return (
+    <div className="friendcard">{children}</div>
+  )};
+
 
 
 const Friends = () => {
@@ -72,17 +77,21 @@ const Friends = () => {
     const fetchUsers = async () => {
       const response = await fetch("https://disc-assignment-5-users-api.onrender.com/api/users")
       const data = await response.json();
-      setUsers(data);
-      // console.log(data); why does this permanently loop the console log instead of logging it once 
+      setUsers(data); 
     }
     fetchUsers()
-  }, [users]);
+  }, [users]); // dependency array has users so that it can detect changes in the value of users, which is based on the API data, if it's left empty it will only fetch data once
   
+  const OnlineFriendsNum = useMemo(() => {
+    return users.length;
+  }, [users]);
+
   return (
     <>
       <div className="friendstop">
         <ul>
             <h1>FRIENDS</h1>
+            <h2> Online: {OnlineFriendsNum}</h2>
             <input type="text" placeholder="Search by username..."></input>
         </ul>
       </div>
@@ -99,18 +108,22 @@ const Friends = () => {
   
       <div className = "friendcardcontainer">
             {users.map((user) => (
-              <div className ='friendcard' key={user.id}>
+              // <div className ='friendcard' key={user.id}>
+              //   <ul>
+              //     <h2>{user.firstname} {user.lastname}</h2>
+              //     <h4>MATH 228-2 in 15m</h4>
+              //   </ul>
+              // </div>                                       PRE GENERIC FUNCTION keeping jic
+              <FriendCard key={user.id}>
                 <ul>
                   <h2>{user.firstname} {user.lastname}</h2>
                   <h4>MATH 228-2 in 15m</h4>
                 </ul>
-              </div>
+              </FriendCard>
             ))}
       </div>
     </> 
   )
 };
-
-
 
 export default Friends;

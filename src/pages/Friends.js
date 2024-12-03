@@ -75,9 +75,10 @@ const Friends = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch("https://disc-assignment-5-users-api.onrender.com/api/users")
+      const response = await fetch("http://localhost:5432/users")
       const data = await response.json();
       setUsers(data); 
+      console.log(users);
     }
     fetchUsers()
   }, [users]); // dependency array has users so that it can detect changes in the value of users, which is based on the API data, if it's left empty it will only fetch data once
@@ -116,7 +117,7 @@ const Friends = () => {
               // </div>                                       PRE GENERIC FUNCTION keeping jic
               <FriendCard key={user.id}>
                 <ul>
-                  <h2>{user.firstname} {user.lastname}</h2>
+                  <h2>{user.first_name} {user.last_name}</h2>
                   <h4>MATH 228-2 in 15m</h4>
                 </ul>
               </FriendCard>

@@ -91,7 +91,7 @@ const Friends = () => {
     <>
       <div className="friendstop">
         <ul>
-            <h1>FRIENDS</h1>
+            <h1>FRIENDS!</h1>
             <h2> Online: {OnlineFriendsNum}</h2>
             <input type="text" placeholder="Search by username..."></input>
         </ul>
@@ -107,6 +107,7 @@ const Friends = () => {
           </div>
       </div>
   
+
       <div className = "friendcardcontainer">
             {users.map((user) => (
               // <div className ='friendcard' key={user.id}>
@@ -114,7 +115,8 @@ const Friends = () => {
               //     <h2>{user.firstname} {user.lastname}</h2>
               //     <h4>MATH 228-2 in 15m</h4>
               //   </ul>
-              // </div>                                       PRE GENERIC FUNCTION keeping jic
+              // </div>                                       PRE GENERIC FUNCTION keeping just in case
+              
               <FriendCard key={user.id}>
                 <ul>
                   <h2>{user.first_name} {user.last_name}</h2>
